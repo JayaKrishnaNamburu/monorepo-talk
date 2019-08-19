@@ -1,0 +1,15 @@
+{
+  "name": "monorepo-talk",
+  "version": "0.0.0",
+  "description": "A talk for handling and managing monorepos using typescript",
+  "author": "Jaya Krishna",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "start": "mdx-deck deck.mdx",
+    "build": "mdx-deck build deck.mdx --out-dir='docs'"
+  },
+  "devDependencies": {
+    "mdx-deck": "^3.0.9"
+  }
+}

@@ -1,0 +1,196 @@
+import { Head, themes, Notes, Split } from "mdx-deck";
+export const theme = {
+  ...themes.dark,
+  styles: {
+    ...themes.dark.styles,
+    a: { color: "white" },
+    ul: { fontSize: "1.4rem" },
+    li: { lineHeight: "32px" },
+    p: {
+      fontSize: "2.5rem",
+      marginTop: "10px",
+      marginBottom: "10px",
+      textAlign: "center"
+    },
+    pre: {
+      fontSize: "1rem",
+      lineHeight: "30px"
+    }
+  }
+};
+import Gallery from "./gallery.js";
+
+<Head>
+  <title>Managing Monorepos</title>
+</Head>
+
+## Managing monorepos with enough time to sleep
+
+<!-- [@askjkrishna](https://twitter.com/askjkrishna) -->
+
+---
+
+#### Ever published a package to a package manager ?
+
+<Gallery
+  images={[
+    {
+      url: "https://media.giphy.com/media/3oKIP9cJEOO9ljKoCc/giphy.gif",
+      alt: "Package"
+    }
+  ]}
+/>
+
+---
+
+### Steps in publishing a package to npm
+
+- Build system to export different packages - esmmodule (es6) - cjs (es5)
+- Managing dependencies and peer dependencies
+- Package versioning
+- Publishing the package
+- Changelog
+
+<Notes>
+broken package -- Talk about your past experience when one if the dependencies
+sub dependecy is missing Because of npm-tree, sometimes it will pick up from
+there even if we did not directly mention in our file
+https://palantir.github.io/tslint/rules/no-implicit-dependencies/
+
+Talk about semver versioning and commitzen standards to follow standards for
+commit messages
+
+</Notes>
+
+---
+
+### Common pitfalls
+
+Oh I missed ! this should have been path #
+
+Missing [Dependencies](https://github.com/Prettyhtml/prettyhtml/pull/108) !!
+
+Ahh !! It worked for me, in my local [machine](https://www.pika.dev/cicd)
+
+<Notes>
+major.minor.patch
+
+major - breaing changes
+
+minor - backward compatibility and internal refactor or additation of new features
+
+path - just bug fixes
+
+tilde(~) installs only patches, (^) installs latest patches and latest minor
+
+Dependencies mixup - for example show the example of pretty-html
+
+</Notes>
+
+---
+
+# 🤯 x n
+
+## (n - number of packages)
+
+<Notes>
+  Talk about teleport where we are currently maintaining 40+ packages
+</Notes>
+
+---
+
+> > A monorepo is a software development strategy where code for many projects are stored in the same repository.
+
+```
+No need to maintain multiple projects and repos 🎉
+```
+
+<Notes>
+  Tell them this does'nt mean keeping all companies project under one repo. Like
+  front-end, back-end and mobile
+</Notes>
+
+---
+
+Monorepos are best used when your packages are dependent on one another for its functioning
+
+---
+
+#### When you are creating a plugin based architecture
+
+- Making your code Reusable using symbolic links
+- Code refactoring becomes easy
+- Single place for managing versioning
+- Easy to track the changes across your packages
+
+---
+
+## Lerna and Verdaccio
+
+```
+Match made in Heaven
+```
+
+<Gallery
+  images={[
+    {
+      url:
+        "https://pbs.twimg.com/profile_images/731667786318020608/OwqAUSQi_400x400.jpg",
+      alt: "Lerna Icon"
+    },
+    {
+      url: "https://media.giphy.com/media/MFabj1E9mgUsqwVWHu/giphy.gif",
+      alt: "Link"
+    },
+    {
+      url:
+        "https://pbs.twimg.com/profile_images/1033959376372092929/pfymFpmu_400x400.jpg",
+      alt: "Verdaccio Icon"
+    }
+  ]}
+/>
+
+---
+
+### Lerna
+
+> > Lerna allows you to maintain multiple packages using yarn workspaces.
+
+---
+
+### Yarn Workspaces 🤔
+
+Packages can be linked together
+
+---
+
+## Verdaccio
+
+A lightweight private npm proxy registry
+
+- To make sure the version numbers are being bumped as required
+- Testing the package independently, without having any synbolic links
+- Ship to production with confidence
+
+---
+
+## Typescript
+
+<Gallery
+  images={[
+    {
+      url: "https://miro.medium.com/max/1200/1*mn6bOs7s6Qbao15PMNRyOA.png",
+      alt: "Typescript"
+    }
+  ]}
+/>
+
+Oh ! let me compile this package...
+
+---
+
+n -packages in watch mode 👀
+
+![Screaming Computer](https://media.giphy.com/media/xT0GqzYDZTRt8URzAA/giphy.gif)
+
+---
